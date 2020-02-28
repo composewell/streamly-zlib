@@ -55,16 +55,11 @@ import Codec.Compression.Zlib.Internal (CompressStream(..), DecompressStream(..)
 
 import qualified Codec.Compression.Zlib.Internal as ZI
 import qualified Data.ByteString as BS
-import qualified Data.ByteString.Lazy.Internal as BSL
+
 import qualified Streamly.Prelude as S
 import qualified Streamly.External.ByteString as Strict
-import qualified Streamly.External.ByteString.Lazy as Lazy
 
 import Control.Monad.IO.Class (MonadIO(..))
-
-{-# INLINE joinS #-}
-joinS :: Monad m => m (SerialT m a) -> SerialT m a
-joinS = S.concatMap id . S.yieldM
 
 data CompressParams =
     CompressParams
